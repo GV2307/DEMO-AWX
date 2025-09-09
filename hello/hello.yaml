@@ -1,0 +1,12 @@
+---
+- name: Test playbook to verify AWX + OneDev integration
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ping all hosts
+      ansible.builtin.ping:
+
+    - name: Print a hello message
+      ansible.builtin.debug:
+        msg: "Hello from AWX and OneDev integration!"
