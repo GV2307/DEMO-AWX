@@ -1,15 +1,23 @@
-name: ARC Test
+name: Multi-Runner Python Test
 
 on:
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: arc-runner-set
-
+  # Job 1: Runs on the Python 2.7 Runner Scale Set
+  run-legacy-python:
+    runs-on: arc-runner-python27
     steps:
-      - name: Test runner
+      - name: Verify Python 2.7
         run: |
-          echo "Hello from ARC"
-          hostname
-          uname -a
+          echo "Running on the Python 2.7 Runner!"
+          python --version
+
+  # Job 2: Runs on the Python Latest Runner Scale Set
+  run-latest-python:
+    runs-on: arc-runner-pythonlatest
+    steps:
+      - name: Verify Python Latest
+        run: |
+          echo "Running on the Python Latest Runner!"
+          python --version
