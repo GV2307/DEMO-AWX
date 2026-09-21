@@ -1,14 +1,13 @@
 name: Multi-Runner Python Test
-
 on:
   workflow_dispatch:
 
 jobs:
-
   run-legacy-python:
     runs-on: arc-runner-python27
-
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
       - name: Verify Python 2.7
         run: |
           echo "Running on the Python 2.7 Runner!"
@@ -16,8 +15,9 @@ jobs:
 
   run-latest-python:
     runs-on: arc-runner-pythonlatest
-
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
       - name: Verify Python Latest
         run: |
           echo "Running on the Python Latest Runner!"
