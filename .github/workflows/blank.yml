@@ -1,24 +1,29 @@
 name: Multi-Runner Python Test
+
 on:
   workflow_dispatch:
 
 jobs:
   run-legacy-python:
-    runs-on: arc-runner-python27
+    runs-on: self-hosted # Targets your active OrbStack systemd runner
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Verify Python 2.7
         run: |
-          echo "Running on the Python 2.7 Runner!"
-          python --version
+          echo "Running on Python 2.7..."
+          python2 --version
 
   run-latest-python:
-    runs-on: arc-runner-pythonlatest
+    runs-on: self-hosted # Targets your active OrbStack systemd runner
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Verify Python Latest
         run: |
-          echo "Running on the Python Latest Runner!"
-          python --version
+          echo "Running on Python 3..."
+          python3 --version
