@@ -5,11 +5,11 @@ on:
 
 jobs:
   run-legacy-python:
-    runs-on: self-hosted # Targets your active OrbStack systemd runner
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Verify Python 2.7
         run: |
@@ -17,11 +17,11 @@ jobs:
           python2 --version
 
   run-latest-python:
-    runs-on: self-hosted # Targets your active OrbStack systemd runner
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Verify Python Latest
         run: |
