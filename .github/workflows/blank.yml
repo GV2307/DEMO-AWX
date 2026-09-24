@@ -1,29 +1,22 @@
-name: Multi-Runner Python Test
+name: Native Bash Systemd Runner Test
 
 on:
   workflow_dispatch:
 
 jobs:
-  run-legacy-python:
-    runs-on: self-hosted
+  run-multi-python-tests:
+    runs-on: self-hosted # Matches your runner
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v7
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Verify Python 2.7
+      - name: Verify Legacy Python 2.7
         run: |
-          echo "Running on Python 2.7..."
+          echo "Testing Python 2.7..."
           python2 --version
 
-  run-latest-python:
-    runs-on: self-hosted
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v7
-
-      - name: Verify Python Latest
+      - name: Verify Modern Python 3
         run: |
-          echo "Running on Python 3..."
+          echo "Testing Python 3..."
           python3 --version
