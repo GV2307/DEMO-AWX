@@ -1,23 +1,13 @@
-name: Native Bash Systemd Runner Test
-
-on:
-  workflow_dispatch:
-
 jobs:
-  run-multi-python-tests:
+  run-tests:
     runs-on: self-hosted
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Verify Legacy Python 2.7
+      - name: Verify Python 2.7
         run: |
-          echo "Attempting to execute Python 2.7 via full path..."
-          # Use the absolute path we set in the Dockerfile
-          /usr/local/bin/python2.7 --version
-          
-      - name: Verify Modern Python 3
+          # Use the absolute path we confirmed in Step 2
+          /usr/bin/python2.7 --version
+      
+      - name: Verify Python 3
         run: |
-          echo "Verifying Python 3..."
+          # Use the system path
           /usr/bin/python3 --version
