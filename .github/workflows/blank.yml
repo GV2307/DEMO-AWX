@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-multi-python-tests:
-    runs-on: self-hosted # Matches your runner
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Repository
@@ -13,10 +13,12 @@ jobs:
 
       - name: Verify Legacy Python 2.7
         run: |
-          echo "Testing Python 2.7..."
-          python2 --version
+          echo "Locating python2..."
+          which python2 || which python
+          /usr/local/bin/python2.7 --version
 
       - name: Verify Modern Python 3
         run: |
-          echo "Testing Python 3..."
+          echo "Locating python3..."
+          which python3
           python3 --version
