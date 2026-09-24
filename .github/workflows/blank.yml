@@ -1,13 +1,21 @@
+name: Systemd Runner Test
+
+on:
+  workflow_dispatch:
+
 jobs:
-  run-tests:
+  python-test:
     runs-on: self-hosted
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Verify Python 2.7
         run: |
-          # Use the absolute path we confirmed in Step 2
+          echo "Running Python 2.7..."
           /usr/bin/python2.7 --version
-      
+
       - name: Verify Python 3
         run: |
-          # Use the system path
-          /usr/bin/python3 --version
+          echo "Running Python 3..."
+          python3 --version
