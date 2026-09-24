@@ -8,17 +8,16 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Verify Legacy Python 2.7
         run: |
-          echo "Locating python2..."
-          which python2 || which python
+          echo "Attempting to execute Python 2.7 via full path..."
+          # Use the absolute path we set in the Dockerfile
           /usr/local/bin/python2.7 --version
-
+          
       - name: Verify Modern Python 3
         run: |
-          echo "Locating python3..."
-          which python3
-          python3 --version
+          echo "Verifying Python 3..."
+          /usr/bin/python3 --version
