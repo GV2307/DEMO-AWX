@@ -1,0 +1,22 @@
+name: Python 2.7 ARC Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  python27-test:
+    runs-on: python27
+
+    steps:
+      - name: Check Python version
+        run: |
+          python --version
+          python3 --version
+
+      - name: Check architecture
+        run: |
+          uname -m
+
+      - name: Check runner
+        run: |
+          echo "Python 2.7 ARC runner is working"
