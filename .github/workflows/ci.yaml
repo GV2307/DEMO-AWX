@@ -1,0 +1,28 @@
+name: Python Environment Verification
+
+# ─────────────────────────────────────────────────────────────
+# CHANGE THIS VALUE TO SWITCH ENVIRONMENTS: "2.7" OR "latest"
+# ─────────────────────────────────────────────────────────────
+env:
+  DEPLOY_ENV: "2.7" # <-- Change this to "latest" to switch execution environments
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  run-version-check:
+    # Dynamically interpolates to 'arc-runner-2.7' or 'arc-runner-latest'
+    runs-on: arc-runner-${{ env.DEPLOY_ENV }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Environment and Python Runtime
+        run: |
+          echo "=================================================="
+          echo "Target Environment: arc-runner-${{ env.DEPLOY_ENV }}"
+          echo "=================================================="
+          python --version
